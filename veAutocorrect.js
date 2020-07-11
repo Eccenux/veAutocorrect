@@ -1,17 +1,14 @@
 /**
  * Autocorrection features in Visual Editor.
  * 
- * Polska dokumentacja:
+ * Polska instrukcja:
  *		https://pl.wikipedia.org/wiki/WP:NAC
- * English documentation:
- *		https://en.wikipedia.org/wiki/User:Nux/veAutocorrect
  * 
- * Original author by Schnark.
- *		https://de.wikipedia.org/wiki/User:Schnark/js/veAutocorrect
+ * Version history and technical docs:
+ *		https://github.com/Eccenux/veAutocorrect
  * 
- * Hooks:
- *	mw.hook('userjs.veNuxAutocorrect')			// when `veNuxAutocorrect` can be used
- *	mw.hook('userjs.veNuxAutocorrect.ready');	// when `veNuxAutocorrect` is fully ready
+ * Authors: Maciej Nux Jaros, Schnark.
+ * 
  * <nowiki>
  */
 /*global mediaWiki, OO, ve*/
