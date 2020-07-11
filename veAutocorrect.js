@@ -82,34 +82,72 @@ function initAutoCorrect (lang, wiki) {
 	autoCorrectFromTo(/\D(')/, '’');
 	autoCorrectFromTo(/\d(")/, '″');
 	*/
+	
 	//depending on the content language
 	switch (lang) {
-	case 'de':
-		autoCorrectFromTo(/(?:^|[( \n])(")$/, '„');
-		autoCorrectFromTo(/[^\d( \n](")$/, '“');
+		case 'de':
+			autoCorrectFromTo(/(?:^|[( \n])(")$/, '„');
+			autoCorrectFromTo(/[^\d( \n](")$/, '“');
 		break;
-	// disabled per en.wiki policies [[:en:MOS:PUNCT]]
-	/*
-	case 'en':
-		autoCorrectFromTo(/(?:^|[( \n])(")$/, '“');
-		autoCorrectFromTo(/[^\d( \n](")$/, '”');
+		// disabled per en.wiki policies [[:en:MOS:PUNCT]]
+		/*
+		case 'en':
+			autoCorrectFromTo(/(?:^|[( \n])(")$/, '“');
+			autoCorrectFromTo(/[^\d( \n](")$/, '”');
 		break;
-	*/
-	case 'pl':
-		autoCorrectFromTo(/(?:^|[( \n])(")$/, '„');
-		autoCorrectFromTo(/[^\d( \n](")$/, '”');
+		*/
+		case 'pl':
+			autoCorrectFromTo(/(?:^|[( \n])(")$/, '„');
+			autoCorrectFromTo(/[^\d( \n](")$/, '”');
 		break;
 	}
+	
 	//depending on the wiki
 	/*jshint onecase: true*/
 	switch (wiki) {
-	case 'dewiki':
-		autoCorrectFromTo([{type: 'paragraph'}, '=', 'w'], [
-			{type: 'heading', attributes: {level: 2}},
-			'W', 'e', 'b', 'l', 'i', 'n', 'k', 's',
-			{type: '/heading'},
-			{type: 'paragraph'}
-		]);
+		case 'dewiki':
+			autoCorrectFromTo([{type: 'paragraph'}, '=', 'w'], [
+				{type: 'heading', attributes: {level: 2}},
+				'W', 'e', 'b', 'l', 'i', 'n', 'k', 's',
+				{type: '/heading'},
+				{type: 'paragraph'}
+			]);
+		break;
+		case 'plwiki':
+			autoCorrectFromTo('{fd}', [
+				{
+					type: 'mwTransclusionBlock',
+					attributes: {
+						mw: {
+							parts: [ {
+								template: {
+									target: {
+										href: 'Szablon:Fakt',
+										wt: 'fakt'
+									},
+									params: {
+										'data': {
+											wt: '2020-07'
+										}
+									}
+								}
+							} ]
+						}
+					}
+				},
+				{ type: '/mwTransclusionBlock' },
+			]);
+		break;
+	}
+	
+	// test
+	window.autoCorrectFromTo = autoCorrectFromTo;
+	
+	// custom
+	if (typeof veAutocorrectCustomRules === 'object' && Array.isArray(veAutocorrectCustomRules)) {
+		for (var i = 0; i < veAutocorrectCustomRules.length; i++) {
+			autoCorrectFromTo(veAutocorrectCustomRules[i].from, veAutocorrectCustomRules[i].to);
+		}
 	}
 }
 
