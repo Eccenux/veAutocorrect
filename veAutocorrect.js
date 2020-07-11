@@ -4,6 +4,9 @@
  * Original dokumentation:
  * https://de.wikipedia.org/wiki/User:Schnark/js/veAutocorrect
  * 
+ * Polska dokumentacja:
+ * https://pl.wikipedia.org/wiki/Wikipedysta:Nux/veAutocorrect
+ * 
  * <nowiki>
  */
 /*global mediaWiki, OO, ve*/
@@ -61,28 +64,35 @@ function initAutoCorrect (lang, wiki) {
 	//define what should be autocorrected
 
 	//for all languages and projects
-	autoCorrectFromTo('--', 'ñ');
-	autoCorrectFromTo('ñ-', 'ó');
-	autoCorrectFromTo('...', 'Ö');
-	autoCorrectFromTo('<<', '´');
-	autoCorrectFromTo('>>', 'ª');
-	autoCorrectFromTo('->', 'õ');
-	autoCorrectFromTo('1/2', '1');
-	autoCorrectFromTo('1/4', '1');
-	autoCorrectFromTo('3/4', '3');
-	autoCorrectFromTo('+-', '±');
-	autoCorrectFromTo(/\d(')/, ''');
-	autoCorrectFromTo(/\D(')/, 'í');
-	autoCorrectFromTo(/\d(")/, 'î');
+	autoCorrectFromTo('--', '‚Äì');
+	autoCorrectFromTo('‚Äì-', '‚Äî');
+	autoCorrectFromTo('...', '‚Ä¶');
+	autoCorrectFromTo('<<', '¬´');
+	autoCorrectFromTo('>>', '¬ª');
+	autoCorrectFromTo('->', '‚Üí');
+	autoCorrectFromTo('1/2', '¬Ω');
+	autoCorrectFromTo('1/4', '¬º');
+	autoCorrectFromTo('3/4', '¬æ');
+	autoCorrectFromTo('+-', '¬±');
+	/*
+	autoCorrectFromTo(/\d(')/, '‚Ä≤');
+	autoCorrectFromTo(/\D(')/, '‚Äô');
+	autoCorrectFromTo(/\d(")/, '‚Ä≥');
+	*/
 	//depending on the content language
 	switch (lang) {
 	case 'de':
-		autoCorrectFromTo(/(?:^|[( \n])(")/, 'Ñ');
-		autoCorrectFromTo(/[^\d( \n](")/, 'ì');
+		autoCorrectFromTo(/(?:^|[( \n])(")$/, '‚Äû');
+		autoCorrectFromTo(/[^\d( \n](")$/, '‚Äú');
 		break;
 	case 'en':
-		autoCorrectFromTo(/(?:^|[( \n])(")/, 'ì');
-		autoCorrectFromTo(/[^\d( \n](")/, 'î');
+		autoCorrectFromTo(/(?:^|[( \n])(")$/, '‚Äú');
+		autoCorrectFromTo(/[^\d( \n](")$/, '‚Äù');
+		break;
+	case 'pl':
+		autoCorrectFromTo(/(?:^|[( \n])(")$/, '‚Äû');
+		autoCorrectFromTo(/[^\d( \n](")$/, '‚Äù');
+		break;
 	}
 	//depending on the wiki
 	/*jshint onecase: true*/
