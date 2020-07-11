@@ -35,7 +35,7 @@ The easiest example (replace "(c)" with "©"):
 importScript('User:Nux/veAutocorrect.js');
 // custom sequences
 mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
-    nac.add({from:'(c)', to:'©'});
+	nac.add({from:'(c)', to:'©'});
 });
 ```
 
@@ -43,7 +43,7 @@ This replacement work in any place. You can any number of such sequences.
 ```js
 // custom sequences
 mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
-    nac.add({from:'(c)', to:'©'});
+	nac.add({from:'(c)', to:'©'});
 	nac.add({from:'>=', to:'≥'});
 	nac.add({from:'<=', to:'≤'});
 });
@@ -55,7 +55,7 @@ Note that for each one a prefix should be unique. So for example If you already 
 ```js
 // custom sequences
 mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
-    nac.add({from:'(c)', to:'©'});
+	nac.add({from:'(c)', to:'©'});
 	nac.add({from:'>= ', to:'≥ '});
 	nac.add({from:'<= ', to:'≤ '});
 	nac.add({from:'<=> ', to:'⇔ '});
@@ -69,12 +69,12 @@ The helpers can either be used in `from` or `to` parameter. You can map helpers 
 // custom sequences
 mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
 	// basic sequence
-    nac.add({from:'(c)', to:'©'});
-    
-    // helper mapping (short)
-    var p = helpers.p;
-    var h2 = helpers.h2;
-    var tpl = helpers.tpl;
+	nac.add({from:'(c)', to:'©'});
+	
+	// helper mapping (short)
+	var p = helpers.p;
+	var h2 = helpers.h2;
+	var tpl = helpers.tpl;
 });
 ```
 
@@ -84,17 +84,17 @@ So if you add a cleanup template a lot you might want to add "{c}" sequence.
 // custom sequences
 mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
 	// basic sequence
-    nac.add({from:'(c)', to:'©'});
-    
-    // helper mapping (short)
-    var p = helpers.p;
-    var h2 = helpers.h2;
-    var tpl = helpers.tpl;
+	nac.add({from:'(c)', to:'©'});
+	
+	// helper mapping (short)
+	var p = helpers.p;
+	var h2 = helpers.h2;
+	var tpl = helpers.tpl;
 
 	// '{c}' -> {{Cleanup}}
-    nac.add({
-    	from: '{c}',
-    	to: tpl({
+	nac.add({
+		from: '{c}',
+		to: tpl({
 			target: {
 				href: 'Template:Cleanup',
 				wt: 'Cleanup'
@@ -109,15 +109,15 @@ If you prefer a template with a parameter:
 ```js
 // custom sequences
 mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
-    // helper mapping (short)
-    var p = helpers.p;
-    var h2 = helpers.h2;
-    var tpl = helpers.tpl;
+	// helper mapping (short)
+	var p = helpers.p;
+	var h2 = helpers.h2;
+	var tpl = helpers.tpl;
 
 	// '{c=pov}' -> {{Cleanup|reason=The neutrality of this article is disputed.}}
-    nac.add({
-    	from: '{c}',
-    	to: tpl({
+	nac.add({
+		from: '{c}',
+		to: tpl({
 			target: {
 				href: 'Template:Cleanup',
 				wt: 'Cleanup'
@@ -136,15 +136,15 @@ Citation needed with date (note that date will be resolved upon saving changes).
 ```js
 // custom sequences
 mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
-    // helper mapping (short)
-    var p = helpers.p;
-    var h2 = helpers.h2;
-    var tpl = helpers.tpl;
+	// helper mapping (short)
+	var p = helpers.p;
+	var h2 = helpers.h2;
+	var tpl = helpers.tpl;
 
 	// '{cn}' -> {{Citation needed|date=...}}
-    nac.add({
-    	from: '{cn}',
-    	to: tpl({
+	nac.add({
+		from: '{cn}',
+		to: tpl({
 			target: {
 				href: 'Template:Citation needed',
 				wt: 'Citation needed'
