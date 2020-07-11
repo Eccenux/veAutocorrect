@@ -22,7 +22,7 @@
  * Autocorrect class (export).
  */
 window.veNuxAutocorrect = {
-	version: '2.0.1',
+	version: '2.0.2',
 	
 	_ready: false,
 	_configs: [],
@@ -39,6 +39,12 @@ window.veNuxAutocorrect = {
 		} else {
 			this._configs.push(config);
 		}
+	},
+	/**
+	 * Alias `addReplacements`.
+	 */
+	add: function(config) {
+		this.addReplacements(config);
 	},
 	
 	_run: function(config) {
