@@ -70,9 +70,9 @@ function initAutoCorrect (lang, wiki) {
 	autoCorrectFromTo('<<', '«');
 	autoCorrectFromTo('>>', '»');
 	autoCorrectFromTo('->', '→');
-	autoCorrectFromTo('1/2', '½');
-	autoCorrectFromTo('1/4', '¼');
-	autoCorrectFromTo('3/4', '¾');
+	autoCorrectFromTo(/(?:^|[^\d])(1\/2)$/, '½');
+	autoCorrectFromTo(/(?:^|[^\d])(1\/4)$/, '¼');
+	autoCorrectFromTo(/(?:^|[^\d])(3\/4)$/, '¾');
 	autoCorrectFromTo('+-', '±');
 	/*
 	autoCorrectFromTo(/\d(')/, '′');
