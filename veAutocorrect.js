@@ -114,9 +114,11 @@ function initAutoCorrect (lang, wiki) {
 			]);
 		break;
 		case 'plwiki':
-			autoCorrectFromTo('{fd}', [
+			var iso = (new Date()).toISOString();
+			var ym = iso.substr(0,7);
+			autoCorrectFromTo('{fd', [
 				{
-					type: 'mwTransclusionBlock',
+					type: 'mwTransclusionInline',
 					attributes: {
 						mw: {
 							parts: [ {
@@ -127,7 +129,7 @@ function initAutoCorrect (lang, wiki) {
 									},
 									params: {
 										'data': {
-											wt: '2020-07'
+											wt: ym
 										}
 									}
 								}
@@ -135,7 +137,7 @@ function initAutoCorrect (lang, wiki) {
 						}
 					}
 				},
-				{ type: '/mwTransclusionBlock' },
+				{ type: '/mwTransclusionInline' },
 			]);
 		break;
 	}
