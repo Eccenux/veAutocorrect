@@ -62,11 +62,6 @@ function AutoCorrectCommand (name, content) {
 	AutoCorrectCommand.parent.call(this, name);
 	this.content = content;
 }
-OO.inheritClass(AutoCorrectCommand, ve.ui.Command);
-AutoCorrectCommand.prototype.execute = function (surface) {
-	surface.getModel().getFragment().insertContent(this.content).collapseToEnd().select();
-	return true;
-};
 
 /**
  * ReSequence.
@@ -77,17 +72,28 @@ AutoCorrectCommand.prototype.execute = function (surface) {
 function ReSequence () {
 	ReSequence.parent.apply(this, arguments);
 }
-OO.inheritClass(ReSequence, ve.ui.Sequence);
-ReSequence.prototype.match = function (data, offset, plaintext) {
-	var execResult;
-	if (this.data instanceof RegExp) {
-		execResult = this.data.exec(plaintext);
-		return execResult && new ve.Range(offset - execResult[1].length, offset);
-	}
-	return ReSequence.parent.prototype.match.apply(this, arguments);
-};
 
-var autoCorrectCommandCount = 0;
+/**
+ * Init classes when ready ve.ui is ready.
+ */
+function initCustomVeClasses() {
+	OO.inheritClass(AutoCorrectCommand, ve.ui.Command);
+	AutoCorrectCommand.prototype.execute = function (surface) {
+		surface.getModel().getFragment().insertContent(this.content).collapseToEnd().select();
+		return true;
+	};
+	
+	OO.inheritClass(ReSequence, ve.ui.Sequence);
+	ReSequence.prototype.match = function (data, offset, plaintext) {
+		var execResult;
+		if (this.data instanceof RegExp) {
+			execResult = this.data.exec(plaintext);
+			return execResult && new ve.Range(offset - execResult[1].length, offset);
+		}
+		return ReSequence.parent.prototype.match.apply(this, arguments);
+	};
+}
+
 /**
  * autoCorrectFromTo.
  * 
@@ -109,6 +115,7 @@ function autoCorrectFromTo (from, to) {
 		new ReSequence(/*sequence*/ name, /*command*/ name, from, 0, true)
 	);
 }
+var autoCorrectCommandCount = 0;
 
 /**
  * Init commands.
@@ -200,6 +207,7 @@ function initAutoCorrect (lang, wiki) {
 //we just need to run once the editor is ready
 //don't care about dependencies, they should be fine when activation is complete
 mw.hook('ve.activationComplete').add(function () {
+	initCustomVeClasses();
 	initAutoCorrect(mw.config.get('wgContentLanguage'), mw.config.get('wgDBname'));
 });
 
