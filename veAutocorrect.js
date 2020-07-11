@@ -9,6 +9,9 @@
  * Original author by Schnark.
  *		https://de.wikipedia.org/wiki/User:Schnark/js/veAutocorrect
  * 
+ * Hooks:
+ *	mw.hook('userjs.veNuxAutocorrect')			// when `veNuxAutocorrect` can be used
+ *	mw.hook('userjs.veNuxAutocorrect.ready');	// when `veNuxAutocorrect` is fully ready
  * <nowiki>
  */
 /*global mediaWiki, OO, ve*/
@@ -19,7 +22,7 @@
  * Autocorrect class (export).
  */
 window.veNuxAutocorrect = {
-	version: 2.0,
+	version: '2.0.1',
 	
 	_ready: false,
 	_configs: [],
@@ -48,8 +51,10 @@ window.veNuxAutocorrect = {
 		}
 		this._configs = [];
 		this._ready = true;
+		mw.hook('userjs.veNuxAutocorrect.ready').fire(veNuxAutocorrect);
 	},
 };
+mw.hook('userjs.veNuxAutocorrect').fire(veNuxAutocorrect);
 
 /**
  * AutoCorrectCommand.
