@@ -19,10 +19,78 @@
 "use strict";
 
 /**
+ * Helpers for defining replacements.
+ */
+class Helpers {
+	/**
+	 * p-starter
+	 * 
+	 * Note! The paragraph is not closed, so that it can be used in `from`.
+	 * E.g.: `from: p('=z+'),`
+	 * 
+	 * Normally paragraphs should be closed (see h2).
+	 */
+	p(text) {
+		var textArray = text.split('');
+		return [{type: 'paragraph'}].concat(textArray);
+	}
+	
+	/**
+	 * Standard header.
+	 * 
+	 * E.g.: `to: h2('See also'),`
+	 */
+	h2(text, skipParagraph) {
+		var head = [
+			{type: 'heading', attributes: {level: 2}},
+			text,
+			{type: '/heading'},
+		];
+		var p = [
+			{type: 'paragraph'},
+			{type: '/paragraph'},
+		];
+		return skipParagraph ? head : head.concat(p);
+	}
+	
+	/**
+	 * Inline or block template.
+	 * 
+	 * Note! Inline templates should be inside a paragraph.
+	 * E.g.:
+	 * ```
+	 * tpl({
+			target: {
+				href: 'Szablon:Przypisy',
+				wt: 'Przypisy'
+			},
+			//params: {}
+		})
+		* ```
+		*/
+	tpl(template, block) {
+		var tplType = block ? 'mwTransclusionBlock' : 'mwTransclusionInline';
+		return [
+			{
+				type: tplType,
+				attributes: {
+					mw: {
+						parts: [ { template: template } ]
+					}
+				}
+			},
+			{ type: '/' + tplType },
+		];
+	}
+}
+
+/**
  * Autocorrect class (export).
  */
 window.veNuxAutocorrect = {
-	version: '2.0.2',
+	version: '2.1.0',
+	
+	helpers: new Helpers(),
 	
 	_ready: false,
 	_configs: [],
@@ -57,10 +125,13 @@ window.veNuxAutocorrect = {
 		}
 		this._configs = [];
 		this._ready = true;
-		mw.hook('userjs.veNuxAutocorrect.ready').fire(veNuxAutocorrect);
+		mw.hook('userjs.veNuxAutocorrect.ready').fire(veNuxAutocorrect, veNuxAutocorrect.helpers);
 	},
 };
-mw.hook('userjs.veNuxAutocorrect').fire(veNuxAutocorrect);
+mw.hook('userjs.veNuxAutocorrect').fire(veNuxAutocorrect, veNuxAutocorrect.helpers);
+
+// shorthand for helpers
+var h = veNuxAutocorrect.helpers;
 
 /**
  * AutoCorrectCommand.
@@ -185,29 +256,19 @@ function initAutoCorrect (lang, wiki) {
 		case 'plwiki':
 			var iso = (new Date()).toISOString();
 			var ym = iso.substr(0,7);
-			autoCorrectFromTo('{fd', [
-				{
-					type: 'mwTransclusionInline',
-					attributes: {
-						mw: {
-							parts: [ {
-								template: {
-									target: {
-										href: 'Szablon:Fakt',
-										wt: 'fakt'
-									},
-									params: {
-										'data': {
-											wt: ym
-										}
-									}
-								}
-							} ]
+			autoCorrectFromTo('{fd',
+				h.tpl({
+					target: {
+						href: 'Szablon:Fakt',
+						wt: 'fakt'
+					},
+					params: {
+						'data': {
+							wt: ym
 						}
 					}
-				},
-				{ type: '/mwTransclusionInline' },
-			]);
+				})
+			);
 		break;
 	}
 	
