@@ -88,10 +88,13 @@ function initAutoCorrect (lang, wiki) {
 		autoCorrectFromTo(/(?:^|[( \n])(")$/, '„');
 		autoCorrectFromTo(/[^\d( \n](")$/, '“');
 		break;
+	// disabled per en.wiki policies [[:en:MOS:PUNCT]]
+	/*
 	case 'en':
 		autoCorrectFromTo(/(?:^|[( \n])(")$/, '“');
 		autoCorrectFromTo(/[^\d( \n](")$/, '”');
 		break;
+	*/
 	case 'pl':
 		autoCorrectFromTo(/(?:^|[( \n])(")$/, '„');
 		autoCorrectFromTo(/[^\d( \n](")$/, '”');
