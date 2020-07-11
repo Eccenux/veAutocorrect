@@ -18,6 +18,8 @@
 (function (mw) {
 "use strict";
 
+var version = '2.1.1';
+
 /**
  * Helpers for defining replacements.
  */
@@ -88,7 +90,7 @@ class Helpers {
  * Autocorrect class (export).
  */
 window.veNuxAutocorrect = {
-	version: '2.1.0',
+	version: version,
 	
 	helpers: new Helpers(),
 	
@@ -155,10 +157,20 @@ function ReSequence () {
 	ReSequence.parent.apply(this, arguments);
 }
 
+var customVeClassesReady = false;
+
 /**
  * Init classes when ready ve.ui is ready.
+ * 
+ * @returns true if already there.
  */
 function initCustomVeClasses() {
+	// avoid re-run when VE re-opened without reloading page
+	if (customVeClassesReady) {
+		return true;
+	}
+	customVeClassesReady = true;
+	
 	OO.inheritClass(AutoCorrectCommand, ve.ui.Command);
 	AutoCorrectCommand.prototype.execute = function (surface) {
 		surface.getModel().getFragment().insertContent(this.content).collapseToEnd().select();
@@ -203,7 +215,6 @@ var autoCorrectCommandCount = 0;
  * Init commands.
  */
 function initAutoCorrect (lang, wiki) {
-
 	//define what should be autocorrected
 
 	//for all languages and projects
@@ -279,8 +290,10 @@ function initAutoCorrect (lang, wiki) {
 //we just need to run once the editor is ready
 //don't care about dependencies, they should be fine when activation is complete
 mw.hook('ve.activationComplete').add(function () {
-	initCustomVeClasses();
-	initAutoCorrect(mw.config.get('wgContentLanguage'), mw.config.get('wgDBname'));
+	var alreadyDone = initCustomVeClasses();
+	if (!alreadyDone) {
+		initAutoCorrect(mw.config.get('wgContentLanguage'), mw.config.get('wgDBname'));
+	}
 });
 
 })(mediaWiki);
