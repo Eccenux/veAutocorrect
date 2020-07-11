@@ -1,11 +1,14 @@
 /**
  * Autocorrection features in Visual Editor.
  * 
- * Original dokumentation:
+ * Original documentation:
  * https://de.wikipedia.org/wiki/User:Schnark/js/veAutocorrect
  * 
+ * English documentation:
+ * https://en.wikipedia.org/wiki/User:Nux/veAutocorrect
+ * 
  * Polska dokumentacja:
- * https://pl.wikipedia.org/wiki/Wikipedysta:Nux/veAutocorrect
+ * https://pl.wikipedia.org/wiki/User:Nux/veAutocorrect
  * 
  * <nowiki>
  */
