@@ -2,13 +2,70 @@
 
 Autocorrection features in Visual Editor.
 
-PL: Informacje o użytkowniu
-----------------------------
+(PL) Informacje o użytkowniu
+-------------------------------
 
 Dokumentacja użytkowa znajduje się na Polskiej Wikipedii: [WP:NAC](https://pl.wikipedia.org/wiki/WP:NAC).
 
+Dalsza część dokumentacji jest w języku angielskim.
+
+Built in sequences
+-------------------------------
+
+There are some built-in sequences in NAC.
+
+<table class="wikitable">
+<tbody><tr>
+<th>Text you type</th>
+<th>Result</th></tr>
+<tr>
+<td><code>--</code></td>
+<td><code>–</code>
+</td></tr>
+<tr>
+<td><code>---</code></td>
+<td><code>—</code>
+</td></tr>
+<tr>
+<td><code>...</code></td>
+<td><code>…</code>
+</td></tr>
+<tr>
+<td><code>&lt;&lt;</code></td>
+<td><code>«</code>
+</td></tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+<td><code>»</code>
+</td></tr>
+<tr>
+<td><code>-&gt;</code></td>
+<td><code>→</code>
+</td></tr>
+<tr>
+<td><code>1/2 </code></td>
+<td><code>½ </code> (requires space after "2")
+</td></tr>
+<tr>
+<td><code>1/4 </code></td>
+<td><code>¼ </code> (requires space after "4")
+</td></tr>
+<tr>
+<td><code>3/4 </code></td>
+<td><code>¾ </code> (requires space after "4")
+</td></tr>
+<tr>
+<td><code>+-</code></td>
+<td><code>±</code>
+</td></tr>
+</tbody></table>
+
+Some extra sequences might be availble depending on the wiki language or wiki name.
+
+For example for Polish language Wikipedia, English quotes (`"`) are replaced with Polish quotes `„”`. Just like in OO Writer or in MS Word 🙂.
+
 Hooks and custom sequences
-----------------------------
+-------------------------------
 
 ### Hooks ###
 
@@ -39,7 +96,9 @@ mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
 });
 ```
 
-This replacement work in any place. You can any number of such sequences.
+This "(c)" to "©" replacement will work in any place, in any part of the article. As long as you use the VisualEditor that is.
+
+You can add any number of such sequences.
 ```js
 // custom sequences
 mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
