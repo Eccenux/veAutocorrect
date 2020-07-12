@@ -15,7 +15,7 @@
 (function (mw) {
 	"use strict";
 
-	var version = '2.1.2';
+	var version = '2.1.3';
 
 	/**
 	 * Helpers for defining replacements.
@@ -86,7 +86,7 @@
 	/**
 	 * Autocorrect class (export).
 	 */
-	window.veNuxAutocorrect = {
+	var veNuxAutocorrect = {
 		version: version,
 		
 		helpers: new Helpers(),
@@ -143,12 +143,12 @@
 	function appendUsageInfo() {
 		// quick death
 		if (usageInfoDone) {
-			console.log('[NAC] appendUsageInfo: quick death');
+			//console.log('[NAC] appendUsageInfo: quick death');
 			return;
 		}
 
 		if (!(ve.init && typeof ve.init.target === 'object')) {
-			console.log('[NAC] appendUsageInfo: no target');
+			//console.log('[NAC] appendUsageInfo: no target');
 			return;
 		}
 
@@ -156,14 +156,14 @@
 		var myInfo = "[[WP:NAC]]";
 		// append if not already
 		if (typeof target.initialEditSummary === 'string' && target.initialEditSummary.length) {
-			console.log('[NAC] appendUsageInfo: append?');
+			//console.log('[NAC] appendUsageInfo: append?');
 			if (target.initialEditSummary.indexOf(myInfo) < 0) {
-				console.log('[NAC] appendUsageInfo: append');
+				//console.log('[NAC] appendUsageInfo: append');
 				target.initialEditSummary += ", " + myInfo;
 			}
 		// create when empty
 		} else {
-			console.log('[NAC] appendUsageInfo: create info');
+			//console.log('[NAC] appendUsageInfo: create info');
 			target.initialEditSummary = myInfo;
 		}
 		usageInfoDone = true;
