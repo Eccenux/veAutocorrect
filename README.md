@@ -60,7 +60,7 @@ There are some built-in sequences in NAC.
 </td></tr>
 </tbody></table>
 
-Some extra sequences might be availble depending on the wiki language or wiki name.
+Some extra sequences might be availble depending on a wiki's language or a wiki's name.
 
 For example for Polish language Wikipedia, English quotes (`"`) are replaced with Polish quotes `„”`. Just like in OO Writer or in MS Word 🙂.
 
