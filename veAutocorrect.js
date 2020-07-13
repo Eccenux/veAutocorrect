@@ -15,7 +15,7 @@
 (function (mw) {
 	"use strict";
 
-	var version = '2.1.3';
+	var version = '2.1.4';
 
 	/**
 	 * Helpers for defining replacements.
@@ -42,7 +42,7 @@
 		h2(text, skipParagraph) {
 			var head = [
 				{type: 'heading', attributes: {level: 2}},
-				text,
+				...text.split(''),
 				{type: '/heading'},
 			];
 			var p = [
