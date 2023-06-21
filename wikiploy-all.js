@@ -7,7 +7,7 @@ const ployBot = new Wikiploy();
 
 // custom summary
 ployBot.prepareSummary = () => {
-	return '#Wikiploy' + ' v2.1.5: wikiploy test';
+	return '#Wikiploy' + ' v2.1.5: formatting';
 }
 
 (async () => {

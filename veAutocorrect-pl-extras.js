@@ -10,9 +10,9 @@ mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
     const tpl = helpers.tpl;
     // extra
     function addHead(config) {
-	    nac.add({
-		    from: p(config.start),
-		    to: h2(config.to),
+		nac.add({
+			from: p(config.start),
+			to: h2(config.to),
 		});
     }
     addHead({start:'=zob', to:'Zobacz też'});
@@ -24,8 +24,8 @@ mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
 
 	// '{p' -> {{Przypisy}}
     nac.add({
-    	from: '{p',
-    	to: tpl({
+		from: '{p',
+		to: tpl({
 			target: {
 				href: 'Szablon:Przypisy',
 				wt: 'Przypisy'
@@ -36,8 +36,8 @@ mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
 	
 	// '=z+' -> Sekcyjne comobo
     nac.add({
-	    from: p('=z+'),
-	    to: [
+		from: p('=z+'),
+		to: [
 			h2('Zobacz też'),
 			h2('Przypisy', true),
 			tpl({
