@@ -15,7 +15,7 @@
 (function (mw) {
 	"use strict";
 
-	var version = '2.1.4';
+	var version = '2.1.5';
 
 	/**
 	 * Helpers for defining replacements.
