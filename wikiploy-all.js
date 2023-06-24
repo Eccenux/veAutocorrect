@@ -6,8 +6,8 @@ import {DeployConfig, Wikiploy} from 'wikiploy';
 const ployBot = new Wikiploy();
 
 // custom summary
-ployBot.prepareSummary = () => {
-	return '#Wikiploy' + ' v2.1.5: formatting';
+ployBot.summary = () => {
+	return 'v2.1.7: wikiploy test';
 }
 
 (async () => {
