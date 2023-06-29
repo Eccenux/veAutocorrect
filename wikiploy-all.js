@@ -7,7 +7,7 @@ const ployBot = new Wikiploy();
 
 // custom summary
 ployBot.summary = () => {
-	return 'v2.1.7: wikiploy test';
+	return 'v2.1.9: beauty mark';
 }
 
 (async () => {

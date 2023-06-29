@@ -2,12 +2,16 @@
  * Autocorrection features in Visual Editor.
  * 
  * Polska instrukcja:
- *		https://pl.wikipedia.org/wiki/WP:NAC
+ * https://pl.wikipedia.org/wiki/WP:NAC
  * 
  * Version history and technical docs:
- *		https://github.com/Eccenux/veAutocorrect
+ * https://github.com/Eccenux/veAutocorrect
  * 
- * Authors: Maciej Nux Jaros, Schnark.
+ * Authors:
+ * Maciej Nux Jaros, Schnark.
+ * 
+ * Deployed with love using Wikiploy:
+ * [[Wikipedia:Wikiploy]]
  * 
  * <nowiki>
  */
@@ -15,7 +19,7 @@
 (function (mw) {
 	"use strict";
 
-	var version = '2.1.7';
+	var version = '2.1.9';
 
 	/**
 	 * Helpers for defining replacements.

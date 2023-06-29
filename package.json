@@ -9,6 +9,6 @@
 		"eslint": "7.4.0"
 	},
 	"dependencies": {
-		"wikiploy": "^1.2.2"
+		"wikiploy": "1.x"
 	}
 }
