@@ -6,9 +6,7 @@
 	"license": "SEE LICENSE IN README.md",
 	"type": "module",
 	"devDependencies": {
-		"eslint": "7.4.0"
-	},
-	"dependencies": {
-		"wikiploy": "1.x"
+		"eslint": "7.4.0",
+		"wikiploy": "2.x"
 	}
 }
