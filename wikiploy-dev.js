@@ -4,11 +4,12 @@
 import {DeployConfig, WikiployLite} from 'wikiploy';
 
 import * as botpass from './bot.config.mjs';
+import { version } from './version.js';
 const ployBot = new WikiployLite(botpass);
 
 // custom summary
 ployBot.summary = () => {
-	return 'v2.1.9: beauty mark';
+	return version.summary;
 }
 
 (async () => {

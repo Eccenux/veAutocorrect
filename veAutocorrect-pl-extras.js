@@ -17,6 +17,7 @@ mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
     }
     addHead({start:'=zob', to:'Zobacz też'});
     addHead({start:'=zt', to:'Zobacz też'});
+    addHead({start:'=u', to:'Uwagi'});
     addHead({start:'=p', to:'Przypisy'});
     addHead({start:'=b', to:'Bibliografia'});
     addHead({start:'=lz', to:'Linki zewnętrzne'});
@@ -39,6 +40,13 @@ mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
 		from: p('=z+'),
 		to: [
 			h2('Zobacz też'),
+			h2('Uwagi', true),
+			tpl({
+				target: {
+					href: 'Szablon:Uwagi',
+					wt: 'Uwagi'
+				},
+			}, true),
 			h2('Przypisy', true),
 			tpl({
 				target: {
