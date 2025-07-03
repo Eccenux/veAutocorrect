@@ -19,7 +19,7 @@
 (function (mw) {
 	"use strict";
 
-	var version = '2.2.0';
+	var version = '2.2.1';
 
 	/**
 	 * Helpers for defining replacements.
@@ -245,7 +245,7 @@
 		ve.init.target.getSurface().commands.push(name);
 		//create and register the sequence
 		ve.ui.sequenceRegistry.register(
-			new ReSequence(/*sequence*/ name, /*command*/ name, from, 0, true)
+			new ReSequence(/*sequence*/ name, /*command*/ name, from, 0, { setSelection: true })
 		);
 	}
 	var autoCorrectCommandCount = 0;
