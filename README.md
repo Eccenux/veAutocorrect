@@ -2,7 +2,7 @@
 
 Autocorrection features in Visual Editor.
 
-(PL) Informacje o użytkowniu
+(PL) Informacje o użytkowaniu
 -------------------------------
 
 Dokumentacja użytkowa znajduje się na Polskiej Wikipedii: [WP:NAC](https://pl.wikipedia.org/wiki/WP:NAC).
@@ -60,7 +60,7 @@ There are some built-in sequences in NAC.
 </td></tr>
 </tbody></table>
 
-Some extra sequences might be availble depending on a wiki's language or a wiki's name.
+Some extra sequences might be available depending on a wiki's language or a wiki's name.
 
 For example for Polish language Wikipedia, English quotes (`"`) are replaced with Polish quotes `„”`. Just like in OO Writer or in MS Word 🙂.
 
@@ -218,7 +218,7 @@ mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
 });
 ```
 
-Also note that `wt:` stands for wikitext. Using wikitext in parametrs should work.
+Also note that `wt:` stands for wikitext. Using wikitext in parameters should work.
 
 Helpers reference
 -----------------
