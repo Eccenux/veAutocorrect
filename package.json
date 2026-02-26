@@ -4,9 +4,14 @@
 	"description": "Autocorrection features in Visual Editor.",
 	"author": "Maciej Nux Jaros",
 	"license": "SEE LICENSE IN README.md",
-	"type": "module",
+	"type": "commonjs",
+	"scripts": {
+		"lint": "npx eslint"
+	},
 	"devDependencies": {
-		"eslint": "7.4.0",
+		"@eslint/js": "^10.0.1",
+		"eslint": "^10.0.1",
+		"globals": "^17.3.0",
 		"wikiploy": "2.x"
 	}
 }
