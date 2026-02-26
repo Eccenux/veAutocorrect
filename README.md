@@ -2,6 +2,21 @@
 
 Autocorrection features in Visual Editor.
 
+<!-- TOC -->
+
+- [PL Informacje o użytkowaniu](#pl-informacje-o-u%C5%BCytkowaniu)
+- [Built in sequences](#built-in-sequences)
+- [Hooks and custom sequences](#hooks-and-custom-sequences)
+	- [Hooks](#hooks)
+	- [Example sequences](#example-sequences)
+	- [Resolving conflicting sequences](#resolving-conflicting-sequences)
+	- [Templates](#templates)
+	- [Advanced types of content](#advanced-types-of-content)
+- [Helpers reference](#helpers-reference)
+- [License and authors](#license-and-authors)
+
+<!-- /TOC -->
+
 (PL) Informacje o użytkowaniu
 -------------------------------
 
@@ -219,6 +234,10 @@ mw.hook('userjs.veNuxAutocorrect.ready').add(function (nac, helpers) {
 ```
 
 Also note that `wt:` stands for wikitext. Using wikitext in parameters should work.
+
+### Advanced types of content
+
+For more advanced guidelines see: [DEV.md](DEV.md). Especially: § Inserting stuff to VE surface.
 
 Helpers reference
 -----------------
