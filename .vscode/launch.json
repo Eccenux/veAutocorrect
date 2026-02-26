@@ -11,7 +11,7 @@
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}\\wikiploy-dev.js"
+			"program": "${workspaceFolder}\\wikiploy-dev.mjs"
 		},
 		{
 			"type": "node",
@@ -20,7 +20,7 @@
 			"skipFiles": [
 				"<node_internals>/**"
 			],
-			"program": "${workspaceFolder}\\wikiploy-all.js"
+			"program": "${workspaceFolder}\\wikiploy-all.mjs"
 		}
 	]
 }
