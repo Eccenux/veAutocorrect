@@ -4,13 +4,13 @@
 import {DeployConfig, WikiployLite} from 'wikiploy';
 
 import * as botpass from './bot.config.mjs';
-import { version } from './version.js';
+import { version } from './version.mjs';
 const ployBot = new WikiployLite(botpass);
 
 // custom summary
 ployBot.summary = () => {
 	return version.summary;
-}
+};
 
 (async () => {
 	const configs = [];
@@ -34,7 +34,7 @@ ployBot.summary = () => {
 		src: 'veAutocorrect-pl-extras.js',
 		dst: 'MediaWiki:Gadget-NAC-extras.js',
 	}));
-	
+
 	await ployBot.deploy(configs);
 })().catch(err => {
 	console.error(err);
