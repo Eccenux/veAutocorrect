@@ -18,6 +18,9 @@ ployBot.summary = () => {
 		src: 'veAutocorrect.js',
 		dst: '~/veAutocorrect.dev.js',
 	}));
+	configs.push(new DeployConfig({
+		src: 'veAutocorrect-pl-extras.js',
+	}));
 	await ployBot.deploy(configs);
 })().catch(err => {
 	console.error(err);
