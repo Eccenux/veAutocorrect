@@ -57,6 +57,9 @@ Some node types might be described here:
 https://www.mediawiki.org/wiki/VisualEditor/Gadgets  
 (search for "type:")
 
+Hooks:
+https://www.mediawiki.org/wiki/VisualEditor/Hooks#New_target_hook
+
 #### Finding specific types
 
 To find specific types, it is probably best to analyze an almost empty page.

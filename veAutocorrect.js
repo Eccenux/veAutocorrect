@@ -19,7 +19,7 @@
 (function (mw) {
 	"use strict";
 
-	let version = '3.0.0';
+	let version = '3.1.0';
 
 	/**
 	 * Helpers for defining replacements.
@@ -385,12 +385,26 @@
 
 	//we just need to run once the editor is ready
 	//don't care about dependencies, they should be fine when activation is complete
-	mw.hook('ve.activationComplete').add(function () {
-		let alreadyDone = initCustomVeClasses();
-		if (!alreadyDone) {
-			initAutoCorrect(mw.config.get('wgContentLanguage'), mw.config.get('wgDBname'));
+	// https://www.mediawiki.org/wiki/VisualEditor/Hooks#New_target_hook
+	mw.hook( 've.newTarget' ).add( ( target ) => {
+		// we only need to do this once
+		// `ve.init.target` is always set to the current `target`
+		// and also seem to always have the same surface object (on desktop)...
+		// but just in case using `_u_nacDone` to make sure it is the same object
+		if (target._u_nacDone) {
+			return;
 		}
-	});
+		target._u_nacDone = true;
+		target.on( 'surfaceReady', () => {
+			if (target.getSurface()._u_nacDone) {
+				return;
+			}
+			target.getSurface()._u_nacDone = true;
+			initCustomVeClasses();
+			// console.log('[NAC]', `initAutoCorrect`);
+			initAutoCorrect(mw.config.get('wgContentLanguage'), mw.config.get('wgDBname'));
+		} );
+	} );
 
 })(mediaWiki);
 //</nowiki>
